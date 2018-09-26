@@ -12,26 +12,11 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 
-import SimpleTabs from './common/SimpleTabs';
-import Footer from './common/Footer';
+import CKMargins from './CKMargins';
+import Header from './Header';
 
 
 const styles = theme => ({
-    '@global': {
-        body: {
-            backgroundColor: theme.palette.common.white,
-        },
-    },
-    layout: {
-        width: 'auto',
-        marginLeft: theme.spacing.unit * 3,
-        marginRight: theme.spacing.unit * 3,
-        [theme.breakpoints.up(900 + theme.spacing.unit * 3 * 2)]: {
-            width: 900,
-            marginLeft: 'auto',
-            marginRight: 'auto',
-        },
-    },
     heroContent: {
         maxWidth: 600,
         margin: '0 auto',
@@ -127,51 +112,52 @@ class Scenarios extends Component {
 
         return (
             <div>
-                <SimpleTabs tab={0} />
-                <main className={classes.layout}>
-                    {/* Hero unit */}
-                    <div className={classes.heroContent}>
-                        <Typography variant="display1" align="center" color="textPrimary" gutterBottom>
-                            Play out what-if scenarios below
+                <Header tab={0} />
+                <main>
+                    <CKMargins>
+                        {/* Hero unit */}
+                        <div className={classes.heroContent}>
+                            <Typography variant="display1" align="center" color="textPrimary" gutterBottom>
+                                Play out what-if scenarios below
                         </Typography>
-                        <Button variant={fabs.add.variant} className={fabs.add.className} color={fabs.add.color}>
-                            {fabs.add.icon}
-                            <p>New Scenario</p>
-                        </Button>
-                    </div>
-                    {/* End hero unit */}
-                    <Grid container spacing={40} alignItems="flex-end">
-                        {scenarios.map(scenario => (
-                            // Enterprise card is full width at sm breakpoint
-                            <Grid item key={scenario.title} xs={12} sm={scenario.title === 'Enterprise' ? 12 : 6} md={4}>
-                                <Card style={{ background: `no-repeat center / cover url(img/${scenario.image})` }}>
-                                    <CardHeader
-                                        title={scenario.title}
-                                        subheader={scenario.subheader}
-                                        titleTypographyProps={{
-                                            align: 'center', 
-                                            color: 'inherit',
-                                        }}
-                                        subheaderTypographyProps={{ align: 'center' }}
-                                        // action={scenario.title === 'Pro' ? <StarIcon /> : null}
-                                        className={classes.cardHeader}
-                                    />
-                                    <CardActions className={classes.cardActions}>
-                                        <Button fullWidth variant="contained" color={scenario.residual < 0 ? 'secondary' : 'primary'} className={classes.cardButton}>
-                                            <Typography variant="title" color="inherit">
-                                                {scenario.residual.toLocaleString(undefined, { style: 'currency', currency: 'USD' }).replace('.00', '')}
+                            <Button variant={fabs.add.variant} className={fabs.add.className} color={fabs.add.color}>
+                                {fabs.add.icon}
+                                <p>New Scenario</p>
+                            </Button>
+                        </div>
+                        {/* End hero unit */}
+                        <Grid container spacing={40} alignItems="flex-end">
+                            {scenarios.map(scenario => (
+                                // Enterprise card is full width at sm breakpoint
+                                <Grid item key={scenario.title} xs={12} sm={scenario.title === 'Enterprise' ? 12 : 6} md={4}>
+                                    <Card style={{ background: `no-repeat center / cover url(img/${scenario.image})` }}>
+                                        <CardHeader
+                                            title={scenario.title}
+                                            subheader={scenario.subheader}
+                                            titleTypographyProps={{
+                                                align: 'center',
+                                                color: 'inherit',
+                                            }}
+                                            subheaderTypographyProps={{ align: 'center' }}
+                                            // action={scenario.title === 'Pro' ? <StarIcon /> : null}
+                                            className={classes.cardHeader}
+                                        />
+                                        <CardActions className={classes.cardActions}>
+                                            <Button fullWidth variant="contained" color={scenario.residual < 0 ? 'secondary' : 'primary'} className={classes.cardButton}>
+                                                <Typography variant="title" color="inherit">
+                                                    {scenario.residual.toLocaleString(undefined, { style: 'currency', currency: 'USD' }).replace('.00', '')}
+                                                </Typography>
+                                                <Typography variant="subheading" color="inherit">
+                                                    /mo
                                             </Typography>
-                                            <Typography variant="subheading" color="inherit">
-                                                /mo
-                                            </Typography>
-                                        </Button>
-                                    </CardActions>
-                                </Card>
-                            </Grid>
-                        ))}
-                    </Grid>
+                                            </Button>
+                                        </CardActions>
+                                    </Card>
+                                </Grid>
+                            ))}
+                        </Grid>
+                    </CKMargins>
                 </main>
-                <Footer className={classes.footer} />
             </div>
         );
     }
