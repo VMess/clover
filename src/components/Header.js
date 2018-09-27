@@ -35,7 +35,8 @@ const styles = theme => ({
     backgroundColor: theme.palette.background.paper,
   },
   appBar: {
-      position: 'relative',
+      position: 'fixed',
+      top: 0,
       backgroundColor: theme.palette.primary,
     },
   toolbarTitle: {

@@ -19,7 +19,7 @@ import Header from './Header';
 const styles = theme => ({
     heroContent: {
         maxWidth: 600,
-        margin: '0 auto',
+        margin: `${theme.spacing.unit * 8}px auto 0 auto`,
         padding: `${theme.spacing.unit * 8}px 0 ${theme.spacing.unit * 6}px`,
     },
     cardHeader: {
