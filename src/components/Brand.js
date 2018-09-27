@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import logo from '../../logo.svg';
+import logo from '../logo.svg';
 
 const styles = theme => ({
   h1: {

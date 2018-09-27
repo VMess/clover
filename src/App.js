@@ -10,8 +10,19 @@ import green from '@material-ui/core/colors/green';
 import Scenarios from './components/Scenarios';
 import Plans from './components/Plans';
 import Reports from './components/Reports';
+import Footer from './components/Footer';
 
 import './App.css';
+
+const styles = theme => ({
+  '@global': {
+    body: {
+      backgroundColor: theme.palette.common.white,
+    },
+  },
+});
+
+console.log('what is @global?', styles);
 
 const theme = createMuiTheme({
   palette: {
@@ -34,15 +45,16 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <BrowserRouter>
-          <MuiThemeProvider theme={theme}>
+        <MuiThemeProvider theme={theme}>
+          <BrowserRouter>
             <Switch>
               <Route exact path='/plans' component={Plans} />
               <Route exact path='/reports' component={Reports} />
               <Route path='/' component={Scenarios} />
             </Switch>
-          </MuiThemeProvider>
-        </BrowserRouter>
+          </BrowserRouter>
+          <Footer />
+        </MuiThemeProvider>
       </div>
     );
   }

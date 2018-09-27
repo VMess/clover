@@ -1,27 +1,13 @@
 import React, { Component } from 'react';
-import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 
+import CKMargins from './CKMargins';
+
 
 const styles = theme => ({
-    '@global': {
-        body: {
-            backgroundColor: theme.palette.common.white,
-        },
-    },
-    layout: {
-        width: 'auto',
-        marginLeft: theme.spacing.unit * 3,
-        marginRight: theme.spacing.unit * 3,
-        [theme.breakpoints.up(900 + theme.spacing.unit * 3 * 2)]: {
-            width: 900,
-            marginLeft: 'auto',
-            marginRight: 'auto',
-        },
-    },
     footer: {
         marginTop: theme.spacing.unit * 8,
         borderTop: `1px solid ${theme.palette.divider}`,
@@ -59,21 +45,23 @@ class Footer extends Component {
         const { classes } = this.props;
 
         return (
-            <footer className={classNames(classes.footer, classes.layout)}>
-                <Grid container spacing={32} justify="space-evenly">
-                    {footers.map(footer => (
-                        <Grid item xs key={footer.title}>
-                            <Typography variant="title" color="textPrimary" gutterBottom>
-                                {footer.title}
-                            </Typography>
-                            {footer.description.map(item => (
-                                <Typography key={item} variant="subheading" color="textSecondary">
-                                    {item}
+            <footer className={classes.footer}>
+                <CKMargins>
+                    <Grid container spacing={32} justify="space-evenly">
+                        {footers.map(footer => (
+                            <Grid item xs key={footer.title}>
+                                <Typography variant="title" color="textPrimary" gutterBottom>
+                                    {footer.title}
                                 </Typography>
-                            ))}
-                        </Grid>
-                    ))}
-                </Grid>
+                                {footer.description.map(item => (
+                                    <Typography key={item} variant="subheading" color="textSecondary">
+                                        {item}
+                                    </Typography>
+                                ))}
+                            </Grid>
+                        ))}
+                    </Grid>
+                </CKMargins>
             </footer>
         );
     }

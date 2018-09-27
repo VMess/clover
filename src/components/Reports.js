@@ -3,26 +3,11 @@ import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 
-import SimpleTabs from './common/SimpleTabs';
-import Footer from './common/Footer';
+import CKMargins from './CKMargins';
+import Header from './Header';
 
 
 const styles = theme => ({
-    '@global': {
-        body: {
-            backgroundColor: theme.palette.common.white,
-        },
-    },
-    layout: {
-        width: 'auto',
-        marginLeft: theme.spacing.unit * 3,
-        marginRight: theme.spacing.unit * 3,
-        [theme.breakpoints.up(900 + theme.spacing.unit * 3 * 2)]: {
-            width: 900,
-            marginLeft: 'auto',
-            marginRight: 'auto',
-        },
-    },
     heroContent: {
         maxWidth: 600,
         margin: '0 auto',
@@ -41,20 +26,21 @@ class Reports extends Component {
 
         return (
             <div>
-                <SimpleTabs tab={2} />
+                <Header tab={2} />
                 <main className={classes.layout}>
-                    {/* Hero unit */}
-                    <div className={classes.heroContent}>
-                        <Typography variant="display1" align="center" color="textPrimary" gutterBottom>
-                            We aren&rsquo;t really sure what goes here
+                    <CKMargins>
+                        {/* Hero unit */}
+                        <div className={classes.heroContent}>
+                            <Typography variant="display1" align="center" color="textPrimary" gutterBottom>
+                                We aren&rsquo;t really sure what goes here
                         </Typography>
-                        <Typography variant="display3" align="center" color="textPrimary" gutterBottom>
-                            <span role="img" aria-label="confused">😕</span>
-                        </Typography>
-                    </div>
-                    {/* End hero unit */}
+                            <Typography variant="display3" align="center" color="textPrimary" gutterBottom>
+                                <span role="img" aria-label="confused">😕</span>
+                            </Typography>
+                        </div>
+                        {/* End hero unit */}
+                    </CKMargins>
                 </main>
-                <Footer className={classes.footer} />
             </div>
         );
     }
